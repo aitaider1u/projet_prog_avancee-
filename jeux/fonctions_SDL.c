@@ -9,6 +9,9 @@
 #include <SDL2/SDL_mixer.h>
 #include"headers/fonctions_SDL.h"
 
+/**
+*Fonction d'initialisation de la SDL
+*/
 void init_SDL()
 {
 	if(SDL_Init(SDL_INIT_VIDEO) < 0) // Initialisation de la SDL
@@ -20,7 +23,12 @@ void init_SDL()
 }
 
 
-
+/**
+*Fonction de création d'une être 
+*@param hauteur la hauteur de la fenêtre
+*@param largeur la largeur de la fenêtre 
+*@return la fenêtre 
+*/
 SDL_Window* creer_window(int hauteur,int largeur){
 
 	SDL_Window *fenetre = SDL_CreateWindow("Fenetre SDL", SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,hauteur,largeur,SDL_WINDOW_RESIZABLE);
