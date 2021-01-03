@@ -7,7 +7,17 @@
 #include"constante.h"
 #include"gestion_farmes.h"
 #include<string.h>
-
+/**
+ * \brief fonction qui initialise un paramettre de type sprite_t
+ * \param h_terrain la hauteur du terrain
+ * \param w_terrain la largeur du terrain
+ * \param x l'abscice 
+ * \param y l'ordonnée
+ * \param large_img largeur d'image du sprite
+ * \param haut_img hauteur d'image du sprite
+ * \param nbr_img_horis nombre image horisental (pour les farmes)
+ * \param nbr_img_vetic nombre d'image vertical (pour les farmes)
+*/
 
 void init_sprite(sprite_t * sprite,int h_terrain,int w_terrain,int x,int y,int large_img,int haut_img,int nbr_img_horis,int nbr_img_vetic)
 {
@@ -22,7 +32,10 @@ void init_sprite(sprite_t * sprite,int h_terrain,int w_terrain,int x,int y,int l
 	init_farme(&(sprite->farme));
 	sprite->est_visible = 1;                                 
 }
-
+/**
+ * \brief fonction qui initialise les piece de money
+ * \param world les données du monde
+*/
 void init_pieces_money(world_t *world)
 {
 	File file = file_vide();
@@ -43,7 +56,10 @@ void init_pieces_money(world_t *world)
 	}
 	effacer_file(file);
 }
-
+/**
+ * \brief fonction revoie la position du heros
+ * \param world les données du monde
+*/
 int position_joueur(world_t *world)
 {
 	int pos = 0;
@@ -57,6 +73,10 @@ int position_joueur(world_t *world)
 }
 
 
+/**
+ * \brief fonction qui initialise les ennemies dans le chemin calculé
+ * \param world les données du monde
+*/
 void init_ennemies(world_t *world)
 {
 	
@@ -86,7 +106,12 @@ void init_ennemies(world_t *world)
 		}
 	}
 } 
-
+/**
+ * \brief fonction qui initialise le monde du jeu
+ * \param world les données du monde
+ * \param niveau les données du monde
+ * \param score les données du monde
+*/
 void init_world(world_t *world, int niveau,int score )
 {
 	char *niveau1;
@@ -105,7 +130,6 @@ void init_world(world_t *world, int niveau,int score )
 	world->tab = lire_fichier(niveau1);
 	init_terrain(&(world->terrain),world->ligne,world->colonne,world->tab);
 	int pos_heros = position_joueur(world);
-	printf("hello %i\n",pos_heros);
 	int y = (pos_heros/world->colonne)*world->terrain.DestR_terrain[0][0].h;
 	int x = (pos_heros%world->colonne)*world->terrain.DestR_terrain[0][0].w;
 	init_sprite(&(world->heros),world->terrain.DestR_terrain[0][0].h,world->terrain.DestR_terrain[0][0].w,x,y,LARGEUR_IMAGE_HEROS, HAUTEUR_IMAGE_HEROS,NBR_HORIS_IMAGE_HEROS , NBR_VERTIC_IMAGE_HEROS);
@@ -142,7 +166,7 @@ bool collision_murs(sprite_t sprite, terrain_t terrain, int ligne, int colonne)
 		for (int j = 0; j < colonne; ++j)
 		{
 			if (terrain.SrcR_terrain[i][j].x !=0 || terrain.SrcR_terrain[i][j].y != 0 ) 
-			 	if (terrain.SrcR_terrain[i][j].x != 32*3 || terrain.SrcR_terrain[i][j].y != 0 ) // differente de la terre
+			 	if (terrain.SrcR_terrain[i][j].x !=  LARGEUR_TERRAIN_IMAGE*3 || terrain.SrcR_terrain[i][j].y != 0 ) // differente de la terre
 				{
 					x2 = terrain.DestR_terrain[i][j].x + terrain.DestR_terrain[i][j].w/2; // l'abscice du centre du du mur(i,j) 
 					y2 = terrain.DestR_terrain[i][j].y + terrain.DestR_terrain[i][j].h/2; // l'ordonnée du centre du du mur(i,j) 
@@ -154,17 +178,29 @@ bool collision_murs(sprite_t sprite, terrain_t terrain, int ligne, int colonne)
 	}
 	return false;	
 }
+/**
+ * \brief fonction qui met de sprite visible
+ * \param sprite structure de finie dans world.h
+*/
 
 void visible (sprite_t * sprite)
 {
 	sprite->est_visible = 1;
 }
+/**
+ * \brief fonction qui met de sprite invisible
+ * \param sprite structure de finie dans world.h
+*/
 
 void invisible (sprite_t * sprite)
 {
 	sprite->est_visible = 0;
 }
-
+/**
+ * \brief fonction verifie la collision entre deux sprite
+ * \param sprite1 structure de finie dans world.h
+ * \param sprite2 structure de finie dans world.h
+*/
 bool collision(sprite_t *sprite_1,sprite_t *sprite_2 )
 {
 	int x1,x2,y1,y2;
@@ -177,6 +213,11 @@ bool collision(sprite_t *sprite_1,sprite_t *sprite_2 )
 			return true;
 	return false;
 }
+
+/**
+ * \brief fonction gere la demarche de tous les ennemies 
+ * \param world les données du monde
+*/
 
 
 
@@ -291,7 +332,7 @@ void demarche_ennemies(world_t *world)
 
 void update_world(world_t *world)
 {
-	depacemnt_bordure(&(world->heros),world->colonne*40,world->ligne*40);
+	depacemnt_bordure(&(world->heros),world->colonne*LARGEUR_TERRAIN_AFFICHAGE,world->ligne*HAUTEUR_TERRAIN_AFFICHAGE);
 	if(!collision(&(world->heros),&(world->tresor)) && world->heros.est_visible == 1){
 		for(int i = 0 ; i<world->ennemies.nbr_ennemies;i++){
 			if (collision(&(world->heros),&(world->ennemies.sprite[i])) && world->heros.est_visible == 1)
@@ -311,7 +352,10 @@ void update_world(world_t *world)
 		}
 
 }
-
+/**
+ * \brief fonction gere la liberation de memoire de tous ce que world alouer 
+ * \param world les données du monde
+*/
 void clean_world(world_t *world)
 {
 	free(world->ennemies.sprite);

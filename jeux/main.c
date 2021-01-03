@@ -33,8 +33,8 @@ int main(int argc, char *argv[]){
 	//Charger l’image
 	init_textures(&jeu,&world,ecran);
 	printf("nbr ennemy %i\n",world.ennemies.nbr_ennemies);
-	printf("ligne   %i colonne %i \n",world.ligne , world.colonne);
-    printf("hello %i %i %i\n",jeu.tab_score[0],jeu.tab_score[1],jeu.tab_score[2]);
+	//printf("ligne   %i colonne %i \n",world.ligne , world.colonne);
+    //printf("hello %i %i %i\n",jeu.tab_score[0],jeu.tab_score[1],jeu.tab_score[2]);
 
 	while(!world.terminer)
 	{

@@ -8,6 +8,12 @@
 #include "message.h"
 #include"jeu.h"
 
+/**
+ * \brief La fonction gere l'initialisation de toute les texture
+ * \param jeu gere la etat du jeu
+ * \param world les données du monde
+*/
+
 void init_textures(jeu_t *jeu,world_t *world,SDL_Renderer * renderer)
 {
 	Uint8 r = 0, g = 255, b = 255;
@@ -32,6 +38,11 @@ void init_textures(jeu_t *jeu,world_t *world,SDL_Renderer * renderer)
 	jeu->replay.image = charger_image ("./ressource/image/replay.bmp",renderer);
 }
 
+/**
+ * \brief La fonction gere la liberation de memoire des toutes les texture image du jeu
+ * \param jeu gere la etat du jeu
+ * \param world les données du monde
+ */
 void clear_textures(jeu_t *jeu,world_t *world)
 {
 	SDL_DestroyTexture(world->terrain.image);
@@ -54,7 +65,15 @@ void clear_textures(jeu_t *jeu,world_t *world)
 	SDL_DestroyTexture(jeu->replay.image);
 
 }
-
+/**
+ * \brief La fonction gère les évènements au cours du jeu
+ * \param event gere  les événements
+ * \param jeu gere la etat du jeu
+ * \param world les données du monde
+ * \param renderer le rendu de la sdl
+ * \param font le font d'ecriture ed ttf 
+ * \param msg gere les message a affacher durant la partie
+ */
 void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Renderer * renderer,TTF_Font *font,message_t *msg)
 {
 	while( SDL_PollEvent( evenements ) )
@@ -170,6 +189,14 @@ void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Rendere
 		}
 
 
+/**
+ * \brief La fonction gère affichage des texture dans l'interface graphique tous durant le programme  
+ * \param jeu gere la etat du jeu
+ * \param world les données du monde
+ * \param renderer le rendu de la sdl
+ * \param font le font d'ecriture ed ttf 
+ * \param msg gere les message a affacher durant la partie
+ */
 
 void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font *font,message_t *msg)
 {

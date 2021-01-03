@@ -55,8 +55,8 @@ void effacer_file(File f)
 	file_Element_t* tmp=NULL;
 	
 
-	if(est_vide_file(f))
-		printf("la file est deja vide\n");
+	//if(est_vide_file(f))
+		//printf("la file est deja vide\n");
 
 	while(f->premier!=NULL)
 	{

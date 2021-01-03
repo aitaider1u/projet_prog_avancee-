@@ -14,7 +14,14 @@
 #include"jeu.h"
 #include"fonctions_fichiers.h"
 
-
+/**
+ * \fonction qui initialise un SDL_Rect
+ * \param rect c'est SDL_Rect d'une texture
+ * \param x abscice
+ * \param y l'ordonnée
+ * \param w largeur
+ * \param h hauteur
+*/
 void init_XYWH(SDL_Rect *rect,int x,int y,int w,int h)
 {
 	rect->x = x;
@@ -23,7 +30,10 @@ void init_XYWH(SDL_Rect *rect,int x,int y,int w,int h)
 	rect->h = h;
 }
 
-
+/**
+ * \fonction initialise état du jeu (home/score/quit) 
+ * \param jeu qui gere l'etat du jeu
+*/
 void init_jeux(jeu_t *jeu)
 {
 	jeu->start = false;
@@ -52,6 +62,12 @@ void init_jeux(jeu_t *jeu)
 	lire_best_score("./ressource/text/score.txt",jeu->tab_score); 
 }
 
+/**
+ * \fonction qui gere update des best score
+ * \param nomFichier du fichier score.h
+ * \param tab qui contient les meilleur score
+ * \param score le score actuel
+*/
 void update_best_score(const char* nomFichier,int *tab ,int score)
 {
 	int tmp;
@@ -73,6 +89,11 @@ void update_best_score(const char* nomFichier,int *tab ,int score)
 	}
 	ecrire_best_score(nomFichier,tab);
 }
+
+/**
+ * \fonction qui gere liberer les jeu_t
+ * \param jeu qui gere l'etat du jeu
+*/
 
 void clean_jeu(jeu_t *jeu)
 {

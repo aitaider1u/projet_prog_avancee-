@@ -11,10 +11,10 @@
 
 
 /**
-*Allocation de deux tableaux à 2 dimensions pour les deux champs de t    (DestR_terrain et SrcR_terrain) de taille ligne *colonne
-*@param t une variable de type terrain_t
-*@param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
-*@param colonne nombre de colonnr du fichier qui a partir du quel on constuit le terrain
+ *\Allocation de deux tableaux à 2 dimensions pour les deux champs de t    (DestR_terrain et SrcR_terrain) de taille ligne *colonne
+ *\param t une variable de type terrain_t
+ *\param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
+ *\param colonne nombre de colonnr du fichier qui a partir du quel on constuit le terrain
 */
 
 void creer_SDL_Renderer_terrain(terrain_t *t,int ligne, int colonne)
@@ -33,9 +33,9 @@ void creer_SDL_Renderer_terrain(terrain_t *t,int ligne, int colonne)
 
 }
 /**
-*Desallocation de deux tableaux 2 dimensions de deux champs de t (DestR_terrain et t.SrcR_terrain) de taille ligne *colonne
-*@param t une variable de type terrain_t
-*@param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
+ *\Desallocation de deux tableaux 2 dimensions de deux champs de t (DestR_terrain et t.SrcR_terrain) de taille ligne *colonne
+ *\param t une variable de type terrain_t
+ *\param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
 */
 
 void desallouer_SDL_Renderer_terrain(terrain_t *t,int ligne)
@@ -54,11 +54,11 @@ void desallouer_SDL_Renderer_terrain(terrain_t *t,int ligne)
 
 }
 /**
-*Initialisation de deux tableaux à 2 dimensions pour les deux champs de t    (DestR_terrain et SrcR_terrain) de taille ligne *colonne a partir de tab
-*@param t une variable de type terrain_t
-*@param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
-*@param colonne nombre de colonne du fichier qui a partir du quel on constuit le terrain
-*@param tab  tableau a 2 dimensions qui qu'ona initialisé a partir de la leture depuis le fichier
+ *\Initialisation de deux tableaux à 2 dimensions pour les deux champs de t    (DestR_terrain et SrcR_terrain) de taille ligne *colonne a partir de tab
+ *\param t une variable de type terrain_t
+ *\param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
+ *\param colonne nombre de colonne du fichier qui a partir du quel on constuit le terrain
+ *\param tab  tableau a 2 dimensions qui qu'ona initialisé a partir de la leture depuis le fichier
 */
 
 void init_terrain(terrain_t* t,int ligne,int colonne,char ** tab )
@@ -99,13 +99,13 @@ void init_terrain(terrain_t* t,int ligne,int colonne,char ** tab )
 }
 
 /**
-*Initialisation de terrain avec chemin
-*@param t une variable de type terrain_t
-*@param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
-*@param colonne nombre de colonne du fichier qui a partir du quel on constuit le terrain
-*@param tab  tableau a 2 dimensions qui qu'ona initialisé a partir de la leture depuis le fichier
-*@ param i c'est l'abscisse du heros
-*@ param j c'est l'ordonnée du heros
+ *\Initialisation de terrain avec chemin 
+ *\param t une variable de type terrain_t
+ *\param ligne nombre de ligne du fichier qui a partir du quel on constuit le terrain
+ *\param colonne nombre de colonne du fichier qui a partir du quel on constuit le terrain
+ *\param tab  tableau a 2 dimensions qui qu'ona initialisé a partir de la leture depuis le fichier
+ *\param i c'est l'abscisse du heros
+ *\param j c'est l'ordonnée du heros
 */
 
 

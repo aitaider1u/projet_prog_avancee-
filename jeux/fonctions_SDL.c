@@ -38,10 +38,10 @@ SDL_Window* creer_window(int hauteur,int largeur){
 
 
 /**
-     * Chargement d'une image sur un rendu
-     * @param nomFichier le nom de l'image au format Bitmap à charger 
-     * @param renderer le rendu 
-     * @return une texture contenant l'image chargée
+     * \Chargement d'une image sur un rendu
+     * \param nomFichier le nom de l'image au format Bitmap à charger 
+     * \param renderer le rendu 
+     * \return une texture contenant l'image chargée
      */
 
 SDL_Texture* charger_image (const char* nomfichier, SDL_Renderer*renderer)
@@ -56,13 +56,13 @@ SDL_Texture* charger_image (const char* nomfichier, SDL_Renderer*renderer)
 	return NULL ;
 }
 /**
-	*Chargement d'une image transparente 
-	*@param nomfichier le nom de l'image au format Bitmap à charger 
-	*@param renderer le rendu
-	*@param r le taux de rouge de la couleur à masquer
-	*@param g le taux de vert de la couleur à masquer
-	*@param b le taux de bleue de la couleur à masquer
-	*@return l'image privée de la couleur souhaitée
+	*\Chargement d'une image transparente 
+	*\param nomfichier le nom de l'image au format Bitmap à charger 
+	*\param renderer le rendu
+	*\param r le taux de rouge de la couleur à masquer
+	*\param g le taux de vert de la couleur à masquer
+	*\param b le taux de bleue de la couleur à masquer
+	*\return l'image privée de la couleur souhaitée
 	*/
 
 SDL_Texture* charger_image_transparente(const char* nomfichier,SDL_Renderer* renderer,Uint8 r, Uint8 g, Uint8 b)
@@ -76,12 +76,12 @@ SDL_Texture* charger_image_transparente(const char* nomfichier,SDL_Renderer* ren
 	return texture ;
 }
 /**
-	*Affichage de texte sur le rendu 
-	*@param message le message à afficher
-	*@param renderer le rendu
-	*@param font la police de charactère 
-	*@param color couleur de la police
-	*@return l'image privée de la couleur souhaitée
+	*\Affichage de texte sur le rendu 
+	*\param message le message à afficher
+	*\param renderer le rendu
+	*\param font la police de charactère 
+	*\param color couleur de la police
+	*\return l'image privée de la couleur souhaitée
 	*/
 	
 SDL_Texture* charger_texte(const char* message, SDL_Renderer* renderer,TTF_Font *font, SDL_Color color) 

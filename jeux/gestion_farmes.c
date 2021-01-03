@@ -4,8 +4,8 @@
 #include "gestion_farmes.h" 
 
 /**
-  *Initialisation d'une farme
-  *@param farme la farme à initialiser
+  *\Initialisation d'une farme
+  *\param farme la farme à initialiser
 */
 void init_farme(farme_t *farme )
 {
@@ -16,11 +16,11 @@ void init_farme(farme_t *farme )
 } 
 
 /**
-*Mise à jour de la frame en fonction de l'evenement (touche clavier)
-*@param farme la farme à mettre à jour
-*@param nbr_image_horisental les images représentants l'animation de marche
-*@param i l'evenement clavier
-*@param temps variable de temporisation de l'animation de marche  
+*\Mise à jour de la frame en fonction de l'evenement (touche clavier)
+*\param farme la farme à mettre à jour
+*\param nbr_image_horisental les images représentants l'animation de marche
+*\param i l'evenement clavier
+*\param temps variable de temporisation de l'animation de marche  
 */
 
 void update_farmes(farme_t *farme,int nbr_image_horisental,int i, int temps)  // elle va etre appliquer si on a changer destination  

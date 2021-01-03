@@ -6,6 +6,13 @@
 #include "graphes2.h"
 #include "files.h"
 
+/**
+ * \Initialisation d'un graphe depuis une matrice de caractères
+ * \param g le graphe 
+ * \param tab la matrice de caractère 
+ * \param ligne le nombre de lignes de la matrice
+ * \param colonne le nombre de colonnes de la matrice 
+*/
 
 void init_graphe(Graphe g,char** tab,int ligne, int colonne) // depuis une matrice 
 {
@@ -44,6 +51,13 @@ void init_graphe(Graphe g,char** tab,int ligne, int colonne) // depuis une matri
 	}
 }
 
+/**
+ * \Calcul du nombre de cases franchissables sur un terrain (éléments de chemin qui ne sont pas des murs)
+ * \param tab la matrice de caractères qui représente le terrain du jeu 
+ * \param ligne le lonbre de lignes de la matrice 
+ * \param colonne le nombre de colonnes de la matrice 
+ * \return le nombre de cases franchissables 
+*/
 
 int calcul_nbr_cases_chemain(char **tab,int ligne , int colonne)
 {
@@ -64,6 +78,13 @@ int calcul_nbr_cases_chemain(char **tab,int ligne , int colonne)
 //coul = la couleur 0 i il n'est pas visiter 1 si il est dans la file et 2 si il est visité
 //sont tous des tableau deux dimension   
 
+/**
+ * \Parcours en largeur du graphe 
+ * \param g le graphe à parcourir 
+ * \param cpt le nombre de sommets 
+ * \param depart le sommet de départ 
+ * \return le tableau des pes pères et des distances du sommet de depart 
+*/
 int** parcours_en_largeur(Graphe g, int cpt, int depart)
 {	
 	File f=file_vide();
@@ -116,7 +137,13 @@ int** parcours_en_largeur(Graphe g, int cpt, int depart)
 	effacer_file(f);
 	return tab;
 }
-
+/**
+ *\Calcul de la distance entre le point de départ du graphe et le sommet le plus éloignée de ce point   
+ *\param g le graphe
+ *\param depart indice du point de depart 
+ *\param cpt le nombre de sommets 
+ *\return la distance entre le sommet de départ et le sommet le plus éloignée de celui ci
+*/
 int nbr_sommet_du_chemin( Graphe g,int depart,int cpt)
 {
 	int max = 0;
@@ -139,7 +166,13 @@ int nbr_sommet_du_chemin( Graphe g,int depart,int cpt)
 	free(tab);
 	return max;
 }
-
+/**
+ * \Détermination du chemin optimal entre le sommet de départ et le sommet le plus éloignée de celui-ci
+ * \param g le graphe 
+ * \param depart le point depart 
+ * \param cpt le nombre de sommets
+ * \return le chemin optimal entre le départ et le sommet le plus éloignée
+*/
 
 int* chemin_le_plus_grand_train( Graphe g,int depart,int cpt)
 {

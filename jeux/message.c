@@ -10,6 +10,14 @@
 #include"constante.h"
 #include"message.h"
 
+/**
+ * \brief La fonction gere l'initialisation les texte a afficher dans le programme
+ * \param msg structure defini dans message.h qui contient un ensembre de text
+ * \param renderer le rendu de l'affichage
+ * \param font le font de ttf
+ * \param tab tableau de de meilleur score
+ * \param niveau le niveau de jeu
+*/
 void init_message(message_t *msg,SDL_Renderer* renderer,TTF_Font *font,int *tab,int niveau)
 {
 	init_text(&(msg->game_over),"Game over",renderer,font,LARGEUR_ECRAN/4,HAUTEUR_ECRAN/4+HAUTEUR_ECRAN/8,LARGEUR_ECRAN/2,HAUTEUR_ECRAN/4); //HAUTEUR_ECRAN*(3/8)
@@ -31,6 +39,16 @@ void init_message(message_t *msg,SDL_Renderer* renderer,TTF_Font *font,int *tab,
 
 }
 ///LARGEUR_ECRAN*5/8+LARGEUR_ECRAN/6,0,LARGEUR_ECRAN/24,HAUTEUR_ECRAN/16);
+
+/**
+ * \brief La fonction gere la mise a jour de l'affichage du score 
+ * \param text structure defini dans affichage_text.h qui est une texture de texte
+ * \param renderer le rendu de l'affichage
+ * \param chiffre est le score a ecrire 
+ * \param x abscice
+ * \param y ardonnée 
+ * \param h hauteur
+*/
 void update_message(text_t *text ,SDL_Renderer* renderer,TTF_Font *font,int chiffre,int x,int y,int h)
 {	
 	char str [10];
@@ -45,7 +63,10 @@ void update_message(text_t *text ,SDL_Renderer* renderer,TTF_Font *font,int chif
 		init_text(text,str,renderer,font,x,y,LARGEUR_ECRAN/12,h);
 
 }
-
+/**
+ * \brief La fonction qui liberer tous les texture text
+ * \param msg structure defini dans massage.h qui est un ensembre de text
+*/
 void clean_message(message_t *msg)
 {
 	SDL_DestroyTexture(msg->game_over.text);
