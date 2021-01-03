@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-
 #include"headers/fonctions_fichiers.h"
 
 /**

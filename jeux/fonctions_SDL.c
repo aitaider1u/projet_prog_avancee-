@@ -6,7 +6,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
 #include"headers/fonctions_SDL.h"
 
 void init_SDL()
