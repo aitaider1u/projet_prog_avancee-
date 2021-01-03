@@ -1,9 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include "headers/graphes2.h"
-//#include "piles.h"
 
 
+/**
+*Fonction d'allocation d'un Graphe 
+*@param nbr_sommets le nombre de somemt du graphe souhaité
+*@return le graphe 
+*/
 Graphe 	allouer_graphe(int nbr_sommets)
 {
 	Graphe g= malloc(sizeof(g));
@@ -33,6 +37,13 @@ Graphe 	allouer_graphe(int nbr_sommets)
 }
 
 
+
+/**
+*Fonction d'ajout d'arete à un graphe 
+*@param g le graphe 
+*@param src l'indice du sommet source 
+*@param dest l'indice du sommet destination
+*/
 void ajouter_arete(Graphe g, int src, int dest)
 {
 	Noeud* tmp=NULL;
@@ -71,6 +82,11 @@ void ajouter_arete(Graphe g, int src, int dest)
 }
 
 
+
+/**
+* Fonction de suppression d'un graphe
+*@param g le graphe à supprimer
+*/
 void desallouer_graphe(Graphe g)
 {	
 	for(int i=0;i<g->nombre_sommets;i++)
@@ -88,6 +104,11 @@ void desallouer_graphe(Graphe g)
 	free(g);
 }
 
+
+/**
+* Fonction d'affichage d'un graphe 
+*@param g le graphe à afficher
+*/
 void afficher_graphe(Graphe g)
 {	
 	Noeud* tmp;
@@ -104,6 +125,13 @@ void afficher_graphe(Graphe g)
 	}
 }
 
+
+/**
+*Fonction qui calcule le nombre de voisins d'un sommet
+*@param g le graphe 
+*@param src le sommet dont on désire connaitre le nombre de voisins 
+*@return le nombre de voisins du sommet
+*/
 int nbr_voisin_listAdjacence(Graphe g,int src)
 {
 	Noeud* tmp;
