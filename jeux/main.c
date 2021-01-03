@@ -49,7 +49,7 @@ int main(int argc, char *argv[]){
 	clean_message(&msg);
 	//clean_jeu(&jeu);
 	// Fermer la police et quitter SDL_ttf
-	TTF_CloseFont( font );
+	TTF_CloseFont(font);
 	TTF_Quit();
 	// Libération de l’écran (renderer)
 	SDL_DestroyRenderer(ecran);

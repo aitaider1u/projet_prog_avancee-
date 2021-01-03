@@ -39,11 +39,8 @@ void init_jeux(jeu_t *jeu)
 	jeu->start = false;
 	jeu->Quit = false;
 	jeu->score = false;
-	init_XYWH(&(jeu->background.SrcR_image),0,0,BACKGROUND_LARGEUR,BACKGROUND_HAUTEUR);
+	init_XYWH(&(jeu->background.SrcR_image),0,0,BACKGROUND_2_LARGEUR,BACKGROUND_2_HAUTEUR);
 	init_XYWH(&(jeu->background.DestR_image),0,0,LARGEUR_ECRAN,HAUTEUR_ECRAN);
-
-	init_XYWH(&(jeu->background2.SrcR_image),0,0,BACKGROUND_2_LARGEUR,BACKGROUND_2_HAUTEUR);
-	init_XYWH(&(jeu->background2.DestR_image),0,0,LARGEUR_ECRAN,HAUTEUR_ECRAN);
 	
 	init_XYWH(&(jeu->image_start.SrcR_image),0,0,IMAGE_START_LARGEUR,IMAGE_START_HAUTEUR);
 	init_XYWH(&(jeu->image_start.DestR_image),(3*LARGEUR_ECRAN)/8,HAUTEUR_ECRAN/4,LARGEUR_ECRAN/4,HAUTEUR_ECRAN/8);

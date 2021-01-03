@@ -29,8 +29,7 @@ void init_textures(jeu_t *jeu,world_t *world,SDL_Renderer * renderer)
 	{
 		world->monnaie.pieces[i].image = charger_image_transparente("./ressource/image/piece.bmp", renderer,r,g,b);
 	}
-	jeu->background.image = charger_image_transparente("./ressource/image/background.bmp", renderer,r,g,b);
- 	jeu->background2.image = charger_image ("./ressource/image/background2.bmp",renderer);
+	jeu->background.image = charger_image_transparente("./ressource/image/background2.bmp", renderer,r,g,b);
 	jeu->image_start.image = charger_image ("./ressource/image/start.bmp",renderer);
 	jeu->image_score.image = charger_image ("./ressource/image/score.bmp",renderer);
 	jeu->image_quit.image = charger_image ("./ressource/image/quit.bmp",renderer);
@@ -57,7 +56,6 @@ void clear_textures(jeu_t *jeu,world_t *world)
 	}
 	SDL_DestroyTexture(world->tresor.image);
 	SDL_DestroyTexture(jeu->background.image);
-	SDL_DestroyTexture(jeu->background2.image);
 	SDL_DestroyTexture(jeu->image_start.image);
 	SDL_DestroyTexture(jeu->image_score.image);
 	SDL_DestroyTexture(jeu->image_quit.image);
@@ -210,7 +208,7 @@ void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font 
 	}
 	if(jeu->score )
 	{	
-		SDL_RenderCopy(renderer,jeu->background2.image,&(jeu->background2.SrcR_image),&(jeu->background2.DestR_image));
+		SDL_RenderCopy(renderer,jeu->background.image,&(jeu->background.SrcR_image),&(jeu->background.DestR_image));
 		init_XYWH(&(jeu->home.DestR_image),(LARGEUR_ECRAN)/16,(HAUTEUR_ECRAN)/16,LARGEUR_ECRAN/16,HAUTEUR_ECRAN/16);
 		SDL_RenderCopy(renderer,jeu->home.image,&(jeu->home.SrcR_image),&(jeu->home.DestR_image));
 		for(int i=0 ; i <7 ; i++){
