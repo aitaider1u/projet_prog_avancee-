@@ -1,37 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "headers/fonctions_SDL.h"
-#include "headers/world.h"
-#include "headers/constante.h"
-#include <SDL2/SDL.h>
-#include "headers/message.h"
-#include "headers/jeu.h"
+#include "fonctions_SDL.h"
+#include"world.h"
+#include"constante.h"
+#include<SDL2/SDL.h>
+#include "message.h"
+#include"jeu.h"
 
 void init_textures(jeu_t *jeu,world_t *world,SDL_Renderer * renderer)
 {
 	Uint8 r = 0, g = 255, b = 255;
-	world->terrain.image = charger_image_transparente("ressource/image/pavage.bmp", renderer,r,g,b);
-	world->heros.image = charger_image_transparente("ressource/image/sprite.bmp", renderer,r,g,b);
+	world->terrain.image = charger_image_transparente("./ressource/image/pavage.bmp", renderer,r,g,b);
+	world->heros.image = charger_image_transparente("./ressource/image/sprite.bmp", renderer,r,g,b);
 	r = 255, g = 255, b = 255;
-	world->tresor.image = charger_image_transparente("ressource/image/tresor.bmp", renderer,r,g,b);
+	world->tresor.image = charger_image_transparente("./ressource/image/tresor.bmp", renderer,r,g,b);
 	for(int i = 0; i< world->ennemies.nbr_ennemies; i++)
 	{
-		world->ennemies.sprite[i].image = charger_image_transparente("ressource/image/ennemy.bmp", renderer,r,g,b);
+		world->ennemies.sprite[i].image = charger_image_transparente("./ressource/image/ennemy.bmp", renderer,r,g,b);
 	}
 	for(int i = 0; i< world->monnaie.nbr_pieces; i++)
 	{
-		world->monnaie.pieces[i].image = charger_image_transparente("ressource/image/piece.bmp", renderer,r,g,b);
+		world->monnaie.pieces[i].image = charger_image_transparente("./ressource/image/piece.bmp", renderer,r,g,b);
 	}
-	jeu->background.image = charger_image_transparente("ressource/image/background.bmp", renderer,r,g,b);
-	jeu->image_start.image = charger_image ("ressource/image/start.bmp",renderer);
-	jeu->image_score.image = charger_image ("ressource/image/score.bmp",renderer);
-	jeu->image_quit.image = charger_image ("ressource/image/quit.bmp",renderer);
-	jeu->home.image = charger_image ("ressource/image/home.bmp",renderer);
-	jeu->replay.image = charger_image ("ressource/image/replay.bmp",renderer);
-	jeu->background2.image = charger_image ("ressource/image/background2.bmp",renderer);
-
-
+	jeu->background.image = charger_image_transparente("./ressource/image/background.bmp", renderer,r,g,b);
+ 	jeu->background2.image = charger_image ("./ressource/image/background2.bmp",renderer);
+	jeu->image_start.image = charger_image ("./ressource/image/start.bmp",renderer);
+	jeu->image_score.image = charger_image ("./ressource/image/score.bmp",renderer);
+	jeu->image_quit.image = charger_image ("./ressource/image/quit.bmp",renderer);
+	jeu->home.image = charger_image ("./ressource/image/home.bmp",renderer);
+	jeu->replay.image = charger_image ("./ressource/image/replay.bmp",renderer);
 }
 
 void clear_textures(jeu_t *jeu,world_t *world)
@@ -46,9 +44,8 @@ void clear_textures(jeu_t *jeu,world_t *world)
 	{
 		SDL_DestroyTexture(world->monnaie.pieces[i].image);
 	}
-
 	SDL_DestroyTexture(world->tresor.image);
-	SDL_DestroyTexture(jeu->background.image);	
+	SDL_DestroyTexture(jeu->background.image);
 	SDL_DestroyTexture(jeu->background2.image);
 	SDL_DestroyTexture(jeu->image_start.image);
 	SDL_DestroyTexture(jeu->image_score.image);
@@ -118,26 +115,24 @@ void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Rendere
                 		if(evenements->button.x> jeu->image_start.DestR_image.x && evenements->button.x<jeu->image_start.DestR_image.x+jeu->image_start.DestR_image.w )
 							if(evenements->button.y> jeu->image_start.DestR_image.y && evenements->button.y < jeu->image_start.DestR_image.y+jeu->image_start.DestR_image.h)
                     		{
-                    			jeu->start = true;									
+                    			jeu->start = true;
                 			}
                     	if(evenements->button.x> jeu->image_quit.DestR_image.x && evenements->button.x<jeu->image_quit.DestR_image.x+jeu->image_quit.DestR_image.w )
 							if(evenements->button.y> jeu->image_quit.DestR_image.y && evenements->button.y < jeu->image_quit.DestR_image.y+jeu->image_quit.DestR_image.h)
                     		{
-								if(!jeu->start && !jeu->score){
+								if(!jeu->start && !jeu->score)
 									world->terminer = true;
-								}
                 			}
 						if(evenements->button.x> jeu->image_score.DestR_image.x && evenements->button.x<jeu->image_score.DestR_image.x+jeu->image_score.DestR_image.w )
 							if(evenements->button.y> jeu->image_score.DestR_image.y && evenements->button.y < jeu->image_score.DestR_image.y+jeu->image_score.DestR_image.h)
                     		{
-								if(!jeu->Quit && !jeu->start){
+								if(!jeu->Quit && !jeu->start)
                     				jeu->score = true;
-								}
                 			}
 						if(evenements->button.x> jeu->home.DestR_image.x && evenements->button.x<jeu->home.DestR_image.x+jeu->home.DestR_image.w )
 							if(evenements->button.y> jeu->home.DestR_image.y && evenements->button.y < jeu->home.DestR_image.y+jeu->home.DestR_image.h)
-                    		{	
-                    			update_best_score("ressource/text/score.txt",jeu->tab_score,world->score);	
+                    					{				
+								update_best_score("./ressource/text/score.txt",jeu->tab_score,world->score);
 								if(!jeu->Quit && !jeu->start )
 								{
 									jeu->start = false;
@@ -150,7 +145,7 @@ void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Rendere
 									clean_world(world);
 									clear_textures(jeu,world);
 									clean_message(msg);
-									init_world(world,world->niveau,0);	
+									init_world(world,1,0);	
 									init_textures(jeu,world,renderer);
 									init_message(msg,renderer,font,jeu->tab_score,1);
 								}
@@ -163,7 +158,7 @@ void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Rendere
 									clean_world(world);
 									clear_textures(jeu,world);
 									clean_message(msg);
-									init_world(world,1,0);
+									init_world(world,1,0);	
 									init_textures(jeu,world,renderer);
 									init_message(msg,renderer,font,jeu->tab_score,1);
 								}
@@ -175,29 +170,19 @@ void handle_events(jeu_t *jeu,world_t *world ,SDL_Event *evenements, SDL_Rendere
 		}
 
 
-void update_data(world_t *world)
-{
-	depacemnt_bordure(&(world->heros),world->ligne*40,world->colonne*40);
-}
-
-
-
-
 
 void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font *font,message_t *msg)
 {
 	SDL_RenderClear(renderer);
-	if(!jeu->start)
+	if(!jeu->start )
 	{
 		SDL_RenderCopy(renderer,jeu->background.image,&(jeu->background.SrcR_image),&(jeu->background.DestR_image));
 		SDL_RenderCopy(renderer,jeu->image_start.image,&(jeu->image_start.SrcR_image),&(jeu->image_start.DestR_image));
 		SDL_RenderCopy(renderer,jeu->image_score.image,&(jeu->image_score.SrcR_image),&(jeu->image_score.DestR_image));
 		SDL_RenderCopy(renderer,jeu->image_quit.image,&(jeu->image_quit.SrcR_image),&(jeu->image_quit.DestR_image));
-
 	}
-	if(jeu->score)
+	if(jeu->score )
 	{	
-
 		SDL_RenderCopy(renderer,jeu->background2.image,&(jeu->background2.SrcR_image),&(jeu->background2.DestR_image));
 		init_XYWH(&(jeu->home.DestR_image),(LARGEUR_ECRAN)/16,(HAUTEUR_ECRAN)/16,LARGEUR_ECRAN/16,HAUTEUR_ECRAN/16);
 		SDL_RenderCopy(renderer,jeu->home.image,&(jeu->home.SrcR_image),&(jeu->home.DestR_image));
@@ -207,7 +192,7 @@ void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font 
 
 	}		
 
-	if(jeu->start){
+	if(jeu->start ){
 		for (int i = 0; i < world->ligne; i++)
 		{
 			for (int j=0 ; j<world->colonne ; j++)
@@ -247,10 +232,10 @@ void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font 
 		else if(collision(&(world->heros),&(world->tresor)))
 		{
 			if (world->tresor.farme.cpt<3)
-			{			
+			{
 				if(world->tresor.farme.cpt  <2 )
 				{
-					world->score = world->score + VALEUR_PIECE_MONEY ;
+					world->score = world->score + VALEUR_PIECE_MONEY ;			
 				}
 				if(world->tresor.farme.cpt == 2)
 				{
@@ -282,12 +267,12 @@ void refresh_graphic(jeu_t *jeu,world_t *world,SDL_Renderer * renderer,TTF_Font 
 	
 	if(!msg->est_affiche_niveau && jeu->start ) 
 	{		
-		SDL_Delay(2000);
+		SDL_Delay(1000);
 		msg->est_affiche_niveau = true;
 	}
 	if(world->tresor.farme.stop)
 	{	         	
-		SDL_Delay(2000);
+		SDL_Delay(1000);
 		if(world->niveau<NBR_NIVEAU)
 		{	
 			world->niveau++;

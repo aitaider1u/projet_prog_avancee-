@@ -7,12 +7,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<SDL2/SDL.h>
-#include"headers/fonctions_SDL.h"
-#include"headers/constante.h"
-#include"headers/message.h"
-#include"headers/world.h"
-#include"headers/jeu.h"
-#include"headers/fonctions_fichiers.h"
+#include"fonctions_SDL.h"
+#include"constante.h"
+#include"message.h"
+#include"world.h"
+#include"jeu.h"
+#include"fonctions_fichiers.h"
 
 
 void init_XYWH(SDL_Rect *rect,int x,int y,int w,int h)
@@ -31,10 +31,10 @@ void init_jeux(jeu_t *jeu)
 	jeu->score = false;
 	init_XYWH(&(jeu->background.SrcR_image),0,0,BACKGROUND_LARGEUR,BACKGROUND_HAUTEUR);
 	init_XYWH(&(jeu->background.DestR_image),0,0,LARGEUR_ECRAN,HAUTEUR_ECRAN);
-	
+
 	init_XYWH(&(jeu->background2.SrcR_image),0,0,BACKGROUND_2_LARGEUR,BACKGROUND_2_HAUTEUR);
 	init_XYWH(&(jeu->background2.DestR_image),0,0,LARGEUR_ECRAN,HAUTEUR_ECRAN);
-
+	
 	init_XYWH(&(jeu->image_start.SrcR_image),0,0,IMAGE_START_LARGEUR,IMAGE_START_HAUTEUR);
 	init_XYWH(&(jeu->image_start.DestR_image),(3*LARGEUR_ECRAN)/8,HAUTEUR_ECRAN/4,LARGEUR_ECRAN/4,HAUTEUR_ECRAN/8);
 
@@ -49,7 +49,7 @@ void init_jeux(jeu_t *jeu)
 	init_XYWH(&(jeu->replay.SrcR_image),0,0,REPLAY_LARGEUR,REPLAY_HAUTEUR);
 	init_XYWH(&(jeu->replay.DestR_image),(LARGEUR_ECRAN*16)/17-LARGEUR_ECRAN/64,(HAUTEUR_ECRAN)/10 ,LARGEUR_ECRAN/16,HAUTEUR_ECRAN/16);
 	jeu->tab_score	= malloc(3*sizeof(int));
-	lire_best_score("ressource/text/score.txt",jeu->tab_score); 
+	lire_best_score("./ressource/text/score.txt",jeu->tab_score); 
 }
 
 void update_best_score(const char* nomFichier,int *tab ,int score)

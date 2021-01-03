@@ -6,9 +6,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<SDL2/SDL.h>
-#include"headers/fonctions_SDL.h"
-#include"headers/constante.h"
-#include"headers/message.h"
+#include"fonctions_SDL.h"
+#include"constante.h"
+#include"message.h"
 
 void init_message(message_t *msg,SDL_Renderer* renderer,TTF_Font *font,int *tab,int niveau)
 {

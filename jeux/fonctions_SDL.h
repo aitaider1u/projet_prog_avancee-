@@ -5,14 +5,13 @@
 */
 #include<SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
+
 #ifndef FONCTIONS_SDL_H
 #define  FONCTIONS_SDL_H
 
 
 
 void init_SDL();
-void init_mixer();
 // Déclaration de la fenêtre
 SDL_Window* creer_window(int hauteur,int largeur);
 SDL_Texture* charger_image (const char* nomfichier, SDL_Renderer*renderer);

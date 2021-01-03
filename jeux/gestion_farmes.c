@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "headers/gestion_farmes.h" 
+#include "gestion_farmes.h" 
 
 /**
   *Initialisation d'une farme

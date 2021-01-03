@@ -2,11 +2,11 @@
 #include <stdlib.h>
 #include<string.h>
 #include<SDL2/SDL.h>
-#include"headers/fonctions_fichiers.h"
-#include"headers/gestion_terrain.h"
-#include"headers/graphes2.h"
-#include"headers/chemin.h"
-#include"headers/constante.h"
+#include"fonctions_fichiers.h"
+#include"gestion_terrain.h"
+#include"graphes2.h"
+#include"chemin.h"
+#include"constante.h"
 
 
 

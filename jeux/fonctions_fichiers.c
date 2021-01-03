@@ -3,7 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-#include"headers/fonctions_fichiers.h"
+#include"fonctions_fichiers.h"
 
 /**
 *Allocation d'un tableau à 2 dimensions ch caractères
@@ -148,13 +148,6 @@ char** lire_fichier(const char* nomFichier)
 	return tab;
 }
 
-/**
-*
-*@param 
-*@param
-*@param 
-*@return 
-*/
 void lire_best_score(const char* nomFichier,int *tab)
 {
 	FILE* fichier =  fopen(nomFichier,"a+");
@@ -179,12 +172,6 @@ void lire_best_score(const char* nomFichier,int *tab)
 
 	
 }
-
-/**
-*Fonction d'écriture du score dans un fichier à partir d'un tableau de scores
-*@param nomFichier le nom du fichier 
-*@param tab le tableau de scores
-*/
 
 void ecrire_best_score(const char* nomFichier,int *tab)
 {
